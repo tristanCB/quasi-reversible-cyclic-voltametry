@@ -1,5 +1,12 @@
 # Simulations of Cyclic Voltammetry for a Quasireversible System
-Function answering question B.5. from (Bard, 2001) p. 807.
+My attempt at answering question B.5. (Appendix B: Digital Simulations of Electrochemical Problems) from __Electrochemical methods : fundamentals and applications__ (Bard, 2001) p. 807.
+
+Author: Tristan Chauvin-Bosse.
+
+### Question B.5
+> "Using a computer, carry out simulations of cyclic voltammetry for a quasireversible system. Let t = 50 and DM = 0.45. Take a = 0.5 and let the diffusion coefficients of the oxidized and reduced forms be equal. Cast your dimensionless intrinsic rate parameter in terms of the function ф defined in (6.5.5), and carry out calculations for ф = 20, 1, and 0.1. Compare the peak splittings in your simulated voltammograms with the values in Table 6.5.2."
+
+(Bard, 2001) p. 807.
 
 ### Example use
 Given a list of three values for the dimensionless intrinsic rate parameter (ψ), a function called CV generates a simulation of cyclic voltametry for a quasireversible system and plots the results. The scan rate is determined by ψ through equation 6.5.5 p.242 (Bard & Faulkner, 2001).
@@ -88,3 +95,6 @@ Nicholson, R. S., & Shain, I. (1964). __Theory of Stationary Electrode Polarogra
 
 Rudolph, M., Reddy, D. P., & Feldberg, S. W. (1994). __A Simulator for Cyclic Voltammetric Responses__. Analytical Chemistry, 66(10), 589A-600A. doi:10.1021/ac00082a725
 
+## Appendix
+
+![Table 6.5.2.](./images/table652.png)

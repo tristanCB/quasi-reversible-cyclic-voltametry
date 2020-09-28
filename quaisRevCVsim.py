@@ -1,4 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env 
+# Author: Tristan Chauvin-Bosse
+
 import matplotlib.pyplot as plt
 import math
 import numpy
