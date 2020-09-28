@@ -19,9 +19,9 @@ def CV(psi):
 	Appropriate time windows for different electrochemical techniques:
 	Cyclic Voltammetry 
 	
-	Time parameter: 			RT/F*v
-	Usual range of parameter:	v = 0.02-10**6 (V/s)
-	Time window					10**-7 - 1 (s)
+	Time parameter:					RT/F*v
+	Usual range of parameter:		v = 0.02-10**6 (V/s)
+	Time window						10**-7 - 1 (s)
 
 	Bard p.480
 
@@ -36,23 +36,23 @@ def CV(psi):
 	
 	"""
 	######################## PHYSICAL CONSTANTS ########################
-	F       = 9.64853*10**4   	# C/mol 	# Faraday's constant
-	R       = 8.31447  			# J/mol-K	# Ideal gas constant
-	T      	= 298.15 			# K			# Temperature. Default = 298.15
-	f       = F/(R*T) 			# V**-1		# Normalized Faraday's constant at room temperature
+	F       = 9.64853*10**4		# C/mol		# Faraday's constant
+	R       = 8.31447			# J/mol-K	# Ideal gas constant
+	T      	= 298.15			# K			# Temperature. Default = 298.15
+	f       = F/(R*T)			# V**-1		# Normalized Faraday's constant at room temperature
 
 	######################## Independed Model Params ########################
 	alpha 		= 0.5			# NONE					# Transfer Coefficient. The way in which kf and kb depend on potential. 	
-	Dm 			= 0.45			# NONE 					# Model diffusion Coefficient 
+	Dm 			= 0.45			# NONE					# Model diffusion Coefficient 
 	l 			= 50			# Number of iterations
-	sensitivity = 1				# This is used to 	
-	Ei 			= +0.2			# V 		# Initial overpotential
-	Ef 			= -0.2			# V  		# Final Overpotential
-	DA 			= 1*10**-5		# cm^2/s 	# Diffusion Coefficientof species A 
-	k0			= 0.2			# cm/s		# Electrochemical rate constant
-	CA			= 1E-06			# mol/cm3	# Bulk concentration of species A
-	n 			= 1 			# NONE		# Number of electrons
-	A			= 4				# cm^2 		# AREA of the electrode
+	sensitivity	= 1				# This is used to 	
+	Ei 			= +0.2			# V 					# Initial overpotential
+	Ef 			= -0.2			# V  					# Final Overpotential
+	DA 			= 1*10**-5		# cm^2/s 				# Diffusion Coefficientof species A 
+	k0			= 0.2			# cm/s					# Electrochemical rate constant
+	CA			= 1E-06			# mol/cm3				# Bulk concentration of species A
+	n 			= 1 			# NONE					# Number of electrons
+	A			= 4				# cm^2 					# AREA of the electrode
 	# For Ei set to +0.6, iterations should be increased to 500 and sensitivity to 10 inorder from program to produce resonable results
 	# Initially following two variables we're used in simulation but errors we're arising
 	# They we're removed and equations written in term of overpotential only.
@@ -89,21 +89,21 @@ def CV(psi):
 		######################## MODEL DESCRIPTORS ########################
 		psiCHECKCHECK = k0/(math.pi*DA*f*v)**0.5	# Just making sure that psi is really psi
 		Lambda = psi[psiCheck]/(math.pi**(-1/2))	# rate of charge transfer to mass transfer
-		tk = 2*(Ei-Ef)/v			# Length of the experiment (s)
-		delt = tk/l					# Carachteristic time (s)
-		delx = (DA*delt/Dm)**0.5	# Characteristic length (cm)
+		tk = 2*(Ei-Ef)/v							# Length of the experiment (s)
+		delt = tk/l									# Carachteristic time (s)
+		delx = (DA*delt/Dm)**0.5					# Characteristic length (cm)
 
 
 		######################## WAVE GENERATOR ###########################
 		# Concatenates two ramps to create sawtooth like potential regime
 		# This was inspired from https://petermattia.com/cyclic_voltammetry_simulation/code.html?fbclid=IwAR1c8VkM0oiEy3fHWLuFiwAQn00tfVOv5IXibbHZqeDyERKPJeln2q7Gz0A
-		k = range(0,l+1)                						# time index vector
-		t = [i*delt for i in k]         						# time vector
-		eta1 = [Ei - v*i for i in t]    						# negative scan
-		eta2 = [Ei - 2*v*t[int(len(t)/2)] + v*i for i in t]    	# positive scan
+		k = range(0,l+1)										# time index vector
+		t = [i*delt for i in k]									# time vector
+		eta1 = [Ei - v*i for i in t]							# negative scan
+		eta2 = [Ei - 2*v*t[int(len(t)/2)] + v*i for i in t]		# positive scan
 		eta.extend(eta1[:int(len(eta1)/2)])						# Combining both scans part 1
 		eta.extend(eta2[int(len(eta1)/2):])						# Combining both scans part 2
-		Enorm = [i*f for i in eta]    							# normalized overpotential
+		Enorm = [i*f for i in eta]								# normalized overpotential
 		####################################################################
 
 		########################### Setting up and boundary conditions ###########################
