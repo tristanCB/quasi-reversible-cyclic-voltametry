@@ -19,9 +19,9 @@ def CV(psi):
 	Appropriate time windows for different electrochemical techniques:
 	Cyclic Voltammetry 
 	
-	Time parameter:					RT/F*v
-	Usual range of parameter:		v = 0.02-10**6 (V/s)
-	Time window						10**-7 - 1 (s)
+	Time parameter:	RT/F*v
+	Usual range of parameter: v = 0.02-10**6 (V/s)
+	Time window: 10**-7 - 1 (s)
 
 	Bard p.480
 
@@ -36,16 +36,16 @@ def CV(psi):
 	
 	"""
 	######################## PHYSICAL CONSTANTS ########################
-	F       = 9.64853*10**4		# C/mol		# Faraday's constant
+	F       = 9.64853*10**4			# C/mol		# Faraday's constant
 	R       = 8.31447			# J/mol-K	# Ideal gas constant
 	T      	= 298.15			# K			# Temperature. Default = 298.15
 	f       = F/(R*T)			# V**-1		# Normalized Faraday's constant at room temperature
 
 	######################## Independed Model Params ########################
-	alpha 		= 0.5			# NONE					# Transfer Coefficient. The way in which kf and kb depend on potential. 	
+	alpha 			= 0.5			# NONE					# Transfer Coefficient. The way in which kf and kb depend on potential. 	
 	Dm 			= 0.45			# NONE					# Model diffusion Coefficient 
 	l 			= 50			# Number of iterations
-	sensitivity	= 1				# This is used to 	
+	sensitivity		= 1
 	Ei 			= +0.2			# V 					# Initial overpotential
 	Ef 			= -0.2			# V  					# Final Overpotential
 	DA 			= 1*10**-5		# cm^2/s 				# Diffusion Coefficientof species A 
